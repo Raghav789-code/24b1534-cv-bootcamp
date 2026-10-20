@@ -2,6 +2,23 @@
 
 Supporting tables (confusion matrix, per-epoch dynamics, all metrics) are in `code/analysis.md`.
 
+## Task 1 confusion matrix
+
+Noisy vs clean labels on the 45,000-image training split (rows = clean label, columns = noisy label). Noise rate: 40.2%.
+
+| clean \ noisy | airplane | automobile | bird | cat | deer | dog | frog | horse | ship | truck |
+|---|---|---|---|---|---|---|---|---|---|---|
+| airplane | 2925 | 293 | 314 | 89 | 94 | 105 | 85 | 75 | 379 | 146 |
+| automobile | 191 | 2657 | 63 | 116 | 80 | 68 | 60 | 64 | 71 | 1126 |
+| bird | 263 | 165 | 2842 | 212 | 254 | 216 | 222 | 147 | 106 | 77 |
+| cat | 180 | 160 | 354 | 2168 | 194 | 924 | 206 | 106 | 91 | 86 |
+| deer | 184 | 142 | 316 | 184 | 2195 | 491 | 174 | 683 | 94 | 50 |
+| dog | 150 | 131 | 240 | 834 | 183 | 2620 | 123 | 136 | 55 | 61 |
+| frog | 170 | 166 | 373 | 350 | 229 | 257 | 2676 | 124 | 96 | 62 |
+| horse | 179 | 120 | 111 | 100 | 233 | 289 | 101 | 3246 | 77 | 50 |
+| ship | 369 | 333 | 94 | 65 | 96 | 79 | 71 | 99 | 3076 | 214 |
+| truck | 180 | 1247 | 81 | 87 | 78 | 81 | 52 | 68 | 115 | 2486 |
+
 Q1. Which class pairs account for most of the noise?
 
 The noise rate is 40.2% on the 45k training split. The noise is concentrated in visually similar pairs: automobile↔truck accounts for 13.1% of all wrong labels (truck→automobile 1,247, automobile→truck 1,126), cat↔dog for 9.7%, deer↔horse for 5.1% and airplane↔ship for 4.1%. Deer→dog (491) and bird→frog/deer add more. These pairs are strongly asymmetric across classes: cat and deer images are mislabeled 51% of the time, horse only 28%. So the noise is class-dependent and systematic, not uniform.
