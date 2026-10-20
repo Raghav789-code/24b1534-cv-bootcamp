@@ -1,0 +1,50 @@
+{
+  "name": "Raghav",
+  "roll_no": "24B1534",
+  "seed": 0,
+  "training_setup": {
+    "optimizer": "SGD, momentum 0.9 (Nesterov), weight decay 5e-4, bf16 autocast",
+    "learning_rate_schedule": "linear warmup to 0.1 over 1 epoch, then per-step cosine decay to 0",
+    "batch_size": 128,
+    "epochs": 60,
+    "augmentation": "random 32x32 crop from 4px zero-padded image + random horizontal flip",
+    "gpu_used": "NVIDIA GeForce RTX 4050 Laptop GPU (6 GB)"
+  },
+  "task1": {
+    "noise_rate": 0.4024,
+    "val_acc_noisy_labels__clean_ref_model": 0.593,
+    "val_acc_noisy_labels__noisy_ce_model": 0.5098
+  },
+  "task2": {
+    "memorization_start_epoch": 32,
+    "early_stop_epoch": 25,
+    "val_acc_noisy_labels_at_early_stop": 0.5562
+  },
+  "task3": {
+    "method": "mean of rank-normalised (a) 1 - cross-validated softmax prob of the noisy label (4-fold CV, 20 epochs per fold, mean of last 5 epochs) and (b) per-sample CE loss averaged over all 60 epochs of the Task 1 noisy CE run"
+  },
+  "task4": {
+    "methods": [
+      {
+        "name": "elr",
+        "file": "t4_elr.csv",
+        "val_acc_noisy_labels": 0.5826
+      },
+      {
+        "name": "relabel",
+        "file": "t4_relabel.csv",
+        "val_acc_noisy_labels": 0.5742
+      },
+      {
+        "name": "gce",
+        "file": "t4_gce.csv",
+        "val_acc_noisy_labels": 0.5706
+      }
+    ],
+    "best_method": "elr"
+  },
+  "task5": {
+    "val_acc_synthetic_labels__baseline": 0.504,
+    "val_acc_synthetic_labels__best_method": 0.54
+  }
+}
