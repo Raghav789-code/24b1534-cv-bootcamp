@@ -1,0 +1,228 @@
+{
+ "noise_rate_train": 0.40242222222222224,
+ "noise_rate_all50k": 0.40208,
+ "top_directed": [
+  [
+   1247,
+   "truck",
+   "automobile",
+   0.0689
+  ],
+  [
+   1126,
+   "automobile",
+   "truck",
+   0.0622
+  ],
+  [
+   924,
+   "cat",
+   "dog",
+   0.051
+  ],
+  [
+   834,
+   "dog",
+   "cat",
+   0.0461
+  ],
+  [
+   683,
+   "deer",
+   "horse",
+   0.0377
+  ],
+  [
+   491,
+   "deer",
+   "dog",
+   0.0271
+  ],
+  [
+   379,
+   "airplane",
+   "ship",
+   0.0209
+  ],
+  [
+   373,
+   "frog",
+   "bird",
+   0.0206
+  ],
+  [
+   369,
+   "ship",
+   "airplane",
+   0.0204
+  ],
+  [
+   354,
+   "cat",
+   "bird",
+   0.0195
+  ]
+ ],
+ "top_pairs": [
+  [
+   "automobile",
+   "truck",
+   2373,
+   0.131
+  ],
+  [
+   "cat",
+   "dog",
+   1758,
+   0.0971
+  ],
+  [
+   "deer",
+   "horse",
+   916,
+   0.0506
+  ],
+  [
+   "airplane",
+   "ship",
+   748,
+   0.0413
+  ],
+  [
+   "deer",
+   "dog",
+   674,
+   0.0372
+  ],
+  [
+   "bird",
+   "frog",
+   595,
+   0.0329
+  ],
+  [
+   "airplane",
+   "bird",
+   577,
+   0.0319
+  ],
+  [
+   "bird",
+   "deer",
+   570,
+   0.0315
+  ]
+ ],
+ "t1_clean": {
+  "val_noisy_final": 0.593,
+  "val_clean_final": 0.9474
+ },
+ "t1_noisy": {
+  "val_noisy_final": 0.5098,
+  "val_clean_final": 0.6926
+ },
+ "t2": {
+  "mem_epoch": 32,
+  "acc_mis_at_mem": 0.1556,
+  "acc_mis_final": 0.6876,
+  "acc_mis_true_at_mem": 0.5943,
+  "acc_mis_true_final": 0.2148,
+  "acc_correct_at_mem": 0.8223,
+  "acc_correct_final": 0.9767,
+  "val_clean_peak_epoch": 41,
+  "val_clean_peak": 0.7944,
+  "val_clean_final": 0.6926,
+  "early_stop": 25,
+  "val_noisy_es": 0.5562,
+  "val_clean_es": 0.7874,
+  "val_noisy_final": 0.5098
+ },
+ "t3": {
+  "combined (submitted)": {
+   "auroc": 0.9556,
+   "prec_at_k": 0.8563
+  },
+  "cv_confidence": {
+   "auroc": 0.942,
+   "prec_at_k": 0.8369
+  },
+  "mean_train_loss": {
+   "auroc": 0.958,
+   "prec_at_k": 0.8618
+  },
+  "loss_at_epoch_25": {
+   "auroc": 0.9364,
+   "prec_at_k": 0.8299
+  },
+  "loss_at_epoch_60": {
+   "auroc": 0.7372,
+   "prec_at_k": 0.6196
+  },
+  "recall_at_k_overall": 0.8563,
+  "recall_at_k_by_pair": {
+   "automobile-truck": 0.641,
+   "cat-dog": 0.5978,
+   "deer-horse": 0.7129,
+   "airplane-ship": 0.8369,
+   "deer-dog": 0.9154,
+   "bird-frog": 0.8958
+  },
+  "missed_mislabeled": 2603
+ },
+ "relabel_info": {
+  "est_noise_rate": 0.4451555555555556,
+  "flagged": 20032,
+  "relabelled": 10643,
+  "dropped": 9389
+ },
+ "t4_best": "elr",
+ "t4_rows": [
+  [
+   "CE baseline (early-stopped, Task 2)",
+   0.5562,
+   0.7874,
+   0.5098,
+   0.6926
+  ],
+  [
+   "ELR (early-learning regularization) [best epoch 60]",
+   0.5826,
+   0.867,
+   0.5826,
+   0.867
+  ],
+  [
+   "CV-score filter + relabel, then CE retrain [best epoch 52]",
+   0.5742,
+   0.8426,
+   0.5742,
+   0.8462
+  ],
+  [
+   "GCE (generalized cross-entropy, q=0.7) [best epoch 54]",
+   0.5706,
+   0.823,
+   0.5654,
+   0.807
+  ]
+ ],
+ "t5_synth_noise_rate": 0.401,
+ "t5_mem_epoch": 42,
+ "t5_acc_mis_final": 0.4794,
+ "t5_rows": [
+  [
+   "t5_ce [best epoch 42]",
+   0.504,
+   0.8374,
+   0.4326,
+   0.7168
+  ],
+  [
+   "t5_best [best epoch 55]",
+   0.54,
+   0.9064,
+   0.5384,
+   0.9066
+  ]
+ ]
+}

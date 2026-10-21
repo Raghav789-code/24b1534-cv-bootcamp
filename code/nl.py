@@ -23,9 +23,10 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from model import ResNet18  # noqa: E402
 
-DATA = Path(os.environ.get("DATA_DIR", HERE.parents[1] / "data"))
-WORK = Path(os.environ.get("WORK_DIR", HERE.parents[1] / "work"))
 SUB = HERE.parent
+# data/ and work/ inside the repo if present (a full clone), otherwise next to the submission folder
+DATA = Path(os.environ.get("DATA_DIR", SUB / "data" if (SUB / "data").is_dir() else HERE.parents[1] / "data"))
+WORK = Path(os.environ.get("WORK_DIR", SUB / "work" if (SUB / "work").is_dir() else HERE.parents[1] / "work"))
 PRED = SUB / "predictions"
 
 # Shared training setup: identical for the baseline and every method.

@@ -6,9 +6,9 @@ All code is in `nl.py` (data, GPU augmentation, training loop, losses, Task 3 sc
 ## Setup
 
 - Python 3.13, PyTorch 2.13 (CUDA 13.0), NumPy. One NVIDIA GPU (tested on an RTX 4050 Laptop, 6 GB).
-- Data: the provided `data/` folder. By default it is expected two levels above this folder
-  (`<repo>/data`, next to `check_format.py`); override with `DATA_DIR=/path/to/data`.
-- Raw run outputs (per-epoch logits) go to `<repo>/work` (override with `WORK_DIR`).
+- Data: the provided `data/` folder. The code uses `data/` at the submission root if it exists (as in the GitHub
+  repo), otherwise `data/` one level above the submission folder; override with `DATA_DIR=/path/to/data`.
+- Raw run outputs (per-epoch logits) go to `work/`, located the same way (override with `WORK_DIR`).
 
 ## Shared training setup (identical for every run)
 
