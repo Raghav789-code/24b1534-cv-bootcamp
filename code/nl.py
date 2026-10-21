@@ -24,9 +24,18 @@ sys.path.insert(0, str(HERE))
 from model import ResNet18  # noqa: E402
 
 SUB = HERE.parent
-# data/ and work/ inside the repo if present (a full clone), otherwise next to the submission folder
-DATA = Path(os.environ.get("DATA_DIR", SUB / "data" if (SUB / "data").is_dir() else HERE.parents[1] / "data"))
-WORK = Path(os.environ.get("WORK_DIR", SUB / "work" if (SUB / "work").is_dir() else HERE.parents[1] / "work"))
+
+
+def _find(name):
+    """data/ or work/: in the submission root, in backup_full_project/ (GitHub repo), or next to the submission."""
+    for p in (SUB / name, SUB / "backup_full_project" / name, HERE.parents[1] / name):
+        if p.is_dir():
+            return p
+    return HERE.parents[1] / name
+
+
+DATA = Path(os.environ.get("DATA_DIR", _find("data")))
+WORK = Path(os.environ.get("WORK_DIR", _find("work")))
 PRED = SUB / "predictions"
 
 # Shared training setup: identical for the baseline and every method.
